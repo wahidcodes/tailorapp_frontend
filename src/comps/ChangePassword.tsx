@@ -28,8 +28,9 @@ const ChangePassword = () => {
         }
 
         fetch(`${import.meta.env.VITE_API_URL}/changepassword`,{
+            mode :'no-cors',
             method:'POST',
-            headers: {'Content-Type':'application/json', 'Authorization':`Bearer ${user.token}`},
+            headers: {'Content-Type':'application/json', 'Authorization':`Bearer ${user.token},`},
             body: JSON.stringify({oldPass, newPass, newAgain}),
         })
             .then(res=>{
