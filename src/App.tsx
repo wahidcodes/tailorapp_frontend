@@ -1,13 +1,31 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import './App.css'
+import { useAuthContext } from './context/useAuthContext'
+import { Link } from 'react-router-dom'
 
 function App() {
   const [count, setCount] = useState(0)
 
+  const {user, dispatch} = useAuthContext();
+  
+  useEffect(()=>{
+    const user:string|null = localStorage.getItem('user');
+    if(user){
+        dispatch({type:'LOGIN',payload:JSON.parse(user)})
+    }
+  },[])
+
+  const logout = ()=>{
+    localStorage.setItem('user','');
+    dispatch({type:'LOGOUT'})
+  }
+
   return (
     <>
+      <Link to={'/admin'}><button>Admin</button></Link>
+      {!user && <Link to={'/login'}><button>Login</button></Link>}
+      <br /><br />
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -18,6 +36,8 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
+
+        {user && <button onClick={()=>logout()}>Log Out</button>}
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
