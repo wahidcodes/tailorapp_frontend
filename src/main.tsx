@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import {
   createBrowserRouter,
-  Navigate,
   RouterProvider,
 } from "react-router-dom";
 
@@ -16,7 +15,7 @@ import DashBoardMain from './comps/DashBoardMain.tsx';
 import AddCustomer from './comps/AddCustomer.tsx';
 import ViewCustomer from './comps/ViewCustomer.tsx';
 
-const user = localStorage.getItem('user');
+const user = localStorage.getItem('user'); // unable to use ternary operators with users
 const router = createBrowserRouter([
   {
     path: '/login',
@@ -47,7 +46,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/admin',
-    element: (user ? <AdminUser/> : <Navigate to='/' />)
+    element: <AdminUser />
   },  
 
 ]);

@@ -67,7 +67,7 @@ const ViewCustomer = () => {
                         <th>Full Name</th>
                         <th>Address</th>
                         <th>Phone Number</th>
-                        <th>Sex</th>
+                        <th>Gender</th>
                         <th>Action</th>
                       </tr>
                   </thead>

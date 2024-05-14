@@ -1,12 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuthContext } from "../context/useAuthContext";
+import { redirect, useNavigate } from "react-router-dom";
 
 const AdminUser = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [role, setRole] = useState('');
     const {user} = useAuthContext();
-        
+    const navigate = useNavigate();
+    
+    useEffect(()=>{
+        if(!user){
+            navigate('/login')
+        }
+    },[])
+
     const onSubmit = ()=>{
         
         if(user){
