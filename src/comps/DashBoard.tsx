@@ -70,23 +70,24 @@ const DashBoard = () => {
                 
 
               </li>
-              <li>
-                <a href="calendar/">
-                  <i className="fa fa-calendar"></i> <span>Calendar</span>
-                </a>
-              </li>
+              {/* <li>
+                    <a href="calendar/">
+                      <i className="fa fa-calendar"></i> <span>Calendar</span>
+                    </a> 
+                  </li> 
+              */}
 
               <li>
-                <a href="orderadd.php">
-                  <i className="fa fa-shopping-cart"></i>
-                  <span>Add Order</span>
-                </a>
+                  <NavLink to="/addorder" style={navLinkStyles}>
+                    <i className="fa fa-shopping-cart"></i>
+                    <span>Add Order</span>
+                  </NavLink>
               </li>
               <li>
-                <a href="orderlist.php">
-                  <i className="fa fa-shopping-cart"></i>
-                  <span>View/Edit Orders</span>
-                </a>
+                  <NavLink to="/vieworders" style={navLinkStyles}>
+                    <i className="fa fa-shopping-cart"></i>
+                    <span>View/Edit Orders</span>
+                  </NavLink>
               </li>
 
               <li>
@@ -103,16 +104,16 @@ const DashBoard = () => {
               </li>
 
               <li>
-                <a href="smslist.php">
+                <NavLink to="/viewsms" style={navLinkStyles}>
                   <i className="fa fa-envelope-o"></i>
                   <span>SENT MESSAGES</span>
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a href="emaillist.php">
+                <NavLink to="/viewemails" style={navLinkStyles}>
                   <i className="fa fa-envelope"></i>
                   <span>SENT EMAILS</span>
-                </a>
+                </NavLink>
               </li>
 
 
@@ -320,7 +321,9 @@ const DashBoard = () => {
 
         <div className="mainpanel">
           <div className="headerbar">
-            <a className="menutoggle">
+
+            <a className="menutoggle" onClick={()=>alert("Working")}>
+              
               <i className="fa fa-bars"></i>
             </a>
 

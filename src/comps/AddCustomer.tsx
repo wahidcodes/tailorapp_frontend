@@ -1,10 +1,11 @@
 import { useState } from "react"
 import { useAuthContext } from "../context/useAuthContext";
+import { useNavigate } from "react-router-dom";
 
 const AddCustomer = () => {
 
     const {user} = useAuthContext();
-
+    const navigate = useNavigate();
     const [fullName, setFullName] = useState('');
     const [address, setAddress] = useState('');
     const [phoneNo, setPhoneNo] = useState('');
@@ -25,7 +26,6 @@ const AddCustomer = () => {
                 return;
             }
             fetch(`${import.meta.env.VITE_API_URL}/addcustomer`,{
-                mode:'no-cors',
                 method:'POST',
                 headers: {'Content-Type':'application/json','Authorization':`Bearer ${user.token}`},
                 body: JSON.stringify(orgObj),
@@ -33,14 +33,15 @@ const AddCustomer = () => {
                 .then(res=>{
                     if(!res.ok){
                         alert('Some problem in submitting customer details')
-                        throw new Error(String(res.status))
+                        
                     }
                     else{
                         return res.json()
                     }
                 })
                 .then(data=>{
-                    alert(data.msg)
+                    alert("Customer successfully added")
+                    navigate('/viewcustomer')
                 })
                 .catch((e:any)=>{
                     console.log("Error occured: ",e)

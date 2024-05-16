@@ -14,6 +14,15 @@ import ChangePassword from './comps/ChangePassword.tsx';
 import DashBoardMain from './comps/DashBoardMain.tsx';
 import AddCustomer from './comps/AddCustomer.tsx';
 import ViewCustomer from './comps/ViewCustomer.tsx';
+import AddOrder from './comps/AddOrder.tsx';
+import ViewOrders from './comps/ViewOrders.tsx';
+import EmailCustomer from './comps/EmailCustomer.tsx';
+import SendSMS from './comps/SendSMS.tsx';
+import UpdateOrder from './comps/UpdateOrder.tsx';
+import ViewEmails from './comps/ViewEmails.tsx';
+import ViewSMS from './comps/ViewSMS.tsx';
+import AddMeas from './comps/AddMeas.tsx';
+import PrintInvoice from './comps/PrintInvoice.tsx';
 
 const user = localStorage.getItem('user'); // unable to use ternary operators with users
 const router = createBrowserRouter([
@@ -41,7 +50,47 @@ const router = createBrowserRouter([
         path: '/viewcustomer',
         element: <ViewCustomer /> 
       },
-          
+      {
+        path: '/addorder',
+        element: <AddOrder />
+      },
+      {
+        path: '/addorder/:idParam',
+        element: <AddOrder />
+      },
+      {
+        path: '/vieworders',
+        element: <ViewOrders/> 
+      },
+      {
+        path: '/updateorder/:idParam',
+        element: <UpdateOrder/> 
+      },
+      {
+        path: '/email/:idParam',
+        element: <EmailCustomer />
+      },
+      {
+        path: '/sendsms/:idParam',
+        element: <SendSMS />
+      },
+      {
+        path: '/viewemails',
+        element: <ViewEmails />
+      },
+      {
+        path: '/viewsms',
+        element: <ViewSMS />
+      },
+      {
+        path: '/addmeas/:idParam',
+        element: <AddMeas />
+      },
+      {
+        path: '/printinvoice/:idParam',
+        element: <PrintInvoice />
+      },
+
     ]
   },
   {

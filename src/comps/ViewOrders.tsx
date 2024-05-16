@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-const ViewCustomer = () => {
+const ViewOrders = () => {
     const [loading, setLoading] = useState(true)
-    const [customerData, setCustomerData] = useState([]);
+    const [orderData, setOrderData] = useState([]);
     const navigate = useNavigate()
     const user:any = JSON.parse(localStorage.getItem('user')||'');
     const [msg, setMsg] = useState('');
     
-    const deleteCustomer = (id:any)=>{
-        fetch(`${import.meta.env.VITE_API_URL}/deletecustomer`,{
+    const deleteOrder = (id:any)=>{
+        fetch(`${import.meta.env.VITE_API_URL}/deleteorder`,{
             method:'DELETE',
             headers: {'Content-Type':'application/json','Authorization':`Bearer ${user.token}`},
             body:JSON.stringify({id})            
@@ -23,15 +23,15 @@ const ViewCustomer = () => {
 
     }
     
-    const fetchCustomer = async ()=>{
+    const fetchOrder = async ()=>{
         
-            const res = await fetch(`${import.meta.env.VITE_API_URL}/fetchcustomers`,{
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/fetchorders`,{
                 method:'GET',
                 headers: {'Content-Type':'application/json','Authorization':`Bearer ${user.token}`},
             })
             const data = await res.json();
             
-            setCustomerData(data.result);
+            setOrderData(data.result);
             setLoading(false)
     }
 
@@ -39,15 +39,15 @@ const ViewCustomer = () => {
         if(!user){
             navigate('/');
         }
-        fetchCustomer();
+        fetchOrder();
 
     },[msg])
     
-    console.log('Data: ',customerData)
+    console.log('Data: ',orderData)
 
     return (  
         <>
-            <h2>View Customer</h2>
+            <h2>View Orders</h2>
             <hr />
 
         
@@ -64,34 +64,36 @@ const ViewCustomer = () => {
                 <table className="table table-striped" id="table2">
                   <thead>
                       <tr>
-                        <th>#</th>
-                        <th>Full Name</th>
-                        <th style={{display:'flex', justifyContent:'center'}}>Address</th>
-                        <th>Phone Number</th>
-                        <th>Gender</th>
-                        <th style={{display:'flex', justifyContent:'center'}}>Action</th>
+                      <th>Order #</th>
+                        <th>Customer</th>
+                        <th>Description</th>
+                        <th>Date Received</th>
+                        <th>Amount</th>
+                        <th>Balance</th>
+                        <th>Action</th>
                       </tr>
                   </thead>
                   <tbody>
-                  {loading ? <tr><td>Loading</td></tr> : customerData.map((customer:any)=>(
+                  {loading ? <tr><td>Loading</td></tr> : orderData.map((order:any)=>(
 
-                            <tr key={customer._id}>
+                            <tr key={order._id}>
                                 <td>1</td>
                                 <td> 
                                     <a href=''> 
-                                        {customer.fullName}
+                                        {order.customerName}
                                     </a>
                                 </td>
-                                <td>{customer.address}</td>
-                                <td>{customer.phoneNo}</td>
-                                <td>{customer.gender}</td>
+                                <td>{order.description}</td>
+                                <td>{order.dateReceived}</td>
+                                <td>{order.amount}</td>
+                                <td>{order.amount-order.paidAmount}</td>
                                 <td>
-                                    <Link style={buttonStyles} className="btn btn-primary btn-xs" to={`/addorder/${customer._id}`}>New Order</Link>
-                                    <Link style={buttonStyles} className="btn btn-warning btn-xs" to={`/addmeas/${customer._id}`}>Measurment</Link>
-                                    <Link style={buttonStyles} to={`/sendsms/${customer._id}`} className='btn btn-info btn-xs'>SMS</Link>
-                                    <Link style={buttonStyles} to={`/email/${customer._id}`} className='btn btn-info btn-xs'>EMAIL</Link>
-                                    <Link style={buttonStyles} to={``} className='btn btn-danger btn-xs' onClick={()=>deleteCustomer(customer._id)}>DELETE</Link>
+                                    <Link style={buttonStyles} className="btn btn-primary btn-xs" to={`/addpayment/`}>Add Payment</Link>
+                                    <Link style={buttonStyles} to={`/printinvoice/${order._id}`} className='btn btn-info btn-xs'>Receipt</Link>
+                                    <Link style={buttonStyles} to={`/updateorder/${order._id}`} className='btn btn-info btn-xs'>Update</Link>
+                                    <Link style={buttonStyles} to={``} className='btn btn-danger btn-xs' onClick={()=>deleteOrder(order._id)}>DELETE</Link>
                                 </td>
+                                
                             </tr>
                   ))  }
 
@@ -104,14 +106,12 @@ const ViewCustomer = () => {
       </div>
                   
       
-
-      
-
-        </>
+    </>
     );
 }
  
-export default ViewCustomer;
+export default ViewOrders;
+
 
 const buttonStyles = {
     height: '2.5em',
