@@ -51,7 +51,7 @@ const EmailCustomer = () => {
     const orgObj = {email, customerName, template, message};
     
 
-
+/*                                                      COMMENTED TO PREVENT MISUSE
     const submit = ()=>{
 
         console.log(orgObj)
@@ -88,7 +88,7 @@ const EmailCustomer = () => {
         }
 
     }
-
+*/
     return (  
         <>
             <h2>Email Customer</h2>
@@ -164,7 +164,14 @@ const EmailCustomer = () => {
                 <div className="col-xs-12 col-md-4" />
                 <div className="col-xs-12 col-md-1" />
                 <div className="col-xs-12 col-md-1" >
-                    <button type="submit" className="btn btn-primary" style={{width:'9em'}} onClick={()=>submit()}>Send Email</button>
+                    <button type="submit" className="btn btn-primary" style={{width:'9em'}} 
+                     onClick={()=>{
+                        //submit()
+                        alert('Not available...');
+                     }
+                    }>
+                        Send Email
+                    </button>
                 </div>
                 <div className="col-xs-12 col-md-4" />
             </div>
