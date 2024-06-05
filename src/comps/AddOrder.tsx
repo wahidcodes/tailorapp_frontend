@@ -24,6 +24,8 @@ const AddOrder = () => {
         const data = await res.json();
         
         setCustomerData(data.result);
+        setCustomerName(data.result[0].fullName)
+        
     }
     
     const fetchDefaultCustomer = async()=>{
@@ -34,6 +36,7 @@ const AddOrder = () => {
             body: JSON.stringify({idParam})
         })
         const {result} = await res.json();
+        console.log("Fetched")
         setCustomerName(result.fullName)
     }
 
@@ -42,7 +45,7 @@ const AddOrder = () => {
             navigate('/');
         }
         fetchCustomer();
-        idParam && fetchDefaultCustomer();
+        //idParam && fetchDefaultCustomer();
 
     },[])
 

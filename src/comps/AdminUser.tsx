@@ -6,7 +6,7 @@ const AdminUser = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [role, setRole] = useState('');
-    const {user} = useAuthContext();
+    const user = JSON.parse(localStorage.getItem('user') || '');
     const navigate = useNavigate();
     
     useEffect(()=>{
@@ -43,7 +43,10 @@ const AdminUser = () => {
                 Email: <input type="text" name="email" id="email" onChange={(e)=>setEmail(e.target.value)}/><br/><br />
                 Password: <input type="password" name="password" id="password" onChange={(e)=>setPassword(e.target.value)}/><br/><br />
                 Role: <input type="text" name="role" id="role" onChange={(e)=>setRole(e.target.value)}/><br/><br />
-                <button type="submit" onClick={()=>onSubmit()}>Submit</button>
+                <button type="submit" onClick={()=>{
+                    //onSubmit()
+                    alert("access blocked")
+                }}>Submit</button>
         </>
     );}
  
