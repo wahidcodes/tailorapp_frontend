@@ -37,7 +37,7 @@ const Login = () => {
                 console.log(data)
                 dispatch({type:'LOGIN',payload:data});
                 localStorage.setItem("user",JSON.stringify(data));
-                navigate('/dashboard')
+                navigate('/')
             })
             .catch((e:any)=>{
                 console.log("Error occured: ",e)

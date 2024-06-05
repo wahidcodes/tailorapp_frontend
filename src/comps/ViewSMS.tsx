@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
+                                        /*              COMPONENT NOT READY YET...                            */
 const ViewSMS = () => {
+    /*
     const [loading, setLoading] = useState(true)
     const [smsData, setSmsData] = useState([]);
     const navigate = useNavigate()
@@ -41,7 +41,7 @@ const ViewSMS = () => {
         //fetchSms();
 
     },[msg])
-    
+    */
 
     return (  
         <>
@@ -65,6 +65,7 @@ const ViewSMS = () => {
                       </tr>
                   </thead>
                   <tbody>
+                    {/*
                   {loading ? <tr><td>Loading</td></tr> : smsData.map((sms:any)=>(
                             <tr key={sms._id}>
                                 <td>1</td>
@@ -78,7 +79,7 @@ const ViewSMS = () => {
                             </tr>
                   ))  }
 
-
+                     */}
                   </tbody>
               </table>
           </div>

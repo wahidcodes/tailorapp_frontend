@@ -74,7 +74,7 @@ const AddOrder = () => {
                         return res.json()
                     }
                 })
-                .then(data=>{
+                .then(()=>{
                     alert("Orders sucessfully added")
                     navigate('/vieworders')
                 })

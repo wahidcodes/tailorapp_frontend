@@ -4,7 +4,14 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useReactToPrint } from 'react-to-print';
 const PrintInvoice = () => {
     
-    const componentRef = useRef();
+    interface singleOrder{
+        dateReceived: String,
+        description: String,
+        amount: Number,
+        paidAmount: Number,
+    }
+
+    const componentRef = useRef<HTMLDivElement>(null)
 
     const user = JSON.parse(localStorage.getItem('user') || '');
     const navigate = useNavigate();
@@ -12,8 +19,8 @@ const PrintInvoice = () => {
  
     const [customerName, setCustomerName] = useState('');
 
-    const [singleOrder, setSingleOrder] = useState([]);
-    const [singleCustomer, setSingleCustomer] = useState([]);
+    const [singleOrder, setSingleOrder] = useState<any>([]);
+    const [singleCustomer, setSingleCustomer] = useState<any>([]);
 
     const [orderDate, setOrderDate] = useState('');
 
@@ -31,7 +38,7 @@ const PrintInvoice = () => {
         console.log(result)
         setCustomerName(result.customerName)
         setSingleOrder(result)
-        setOrderDate(singleOrder?.dateReceived?.slice(0,10))
+        setOrderDate(singleOrder.dateReceived?.slice(0,10))
     }
 
     const fetchDefaultCustomer = async()=>{

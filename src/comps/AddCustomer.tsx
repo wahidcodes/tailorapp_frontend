@@ -39,7 +39,7 @@ const AddCustomer = () => {
                         return res.json()
                     }
                 })
-                .then(data=>{
+                .then(()=>{
                     alert("Customer successfully added")
                     navigate('/viewcustomer')
                 })

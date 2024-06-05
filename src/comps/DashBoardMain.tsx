@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const DashBoardMain = () => {
 
@@ -10,7 +10,6 @@ const DashBoardMain = () => {
     const user:any = JSON.parse(localStorage.getItem('user')||'');
     const navigate = useNavigate();
 
-    const [msg, setMsg] = useState('');
 
     const fetchCustomer = async ()=>{
         
@@ -48,7 +47,7 @@ const DashBoardMain = () => {
         setLoading(false)
     }
 
-    console.log(income)
+    console.log(income, loading)
     
 useEffect(()=>{
     if(!user){
@@ -57,7 +56,7 @@ useEffect(()=>{
     fetchCustomer();
     fetchOrder();
     fetchIncome();
-},[msg])
+},[])
 
     return (  
         <>
@@ -78,13 +77,13 @@ useEffect(()=>{
                                 </div>
                             </div>
                         </div>
-                        <a href="customerview.php">
+                        <Link to="/viewcustomer">              
                             <div className="panel-footer">
                                 <span className="pull-left">View Details</span>
                                 <span className="pull-right"><i className="fa fa-arrow-circle-right"></i></span>
                                 <div className="clearfix"></div>
                             </div>
-                        </a>
+                        </Link>
                     </div>
                 </div>
                 <div className="col-lg-3 col-md-6">
@@ -100,13 +99,13 @@ useEffect(()=>{
                                 </div>
                             </div>
                         </div>
-                        <a href="orderlist.php">
+                        <Link to="/vieworders">  
                             <div className="panel-footer">
                             	<span className="pull-left">View Details</span>
                                 <span className="pull-right"><i className="fa fa-arrow-circle-right"></i></span>
                                 <div className="clearfix"></div>
                             </div>
-                        </a>
+                        </Link>
                     </div>
                 </div>
                 <div className="col-lg-3 col-md-6">

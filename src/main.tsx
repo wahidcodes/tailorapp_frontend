@@ -24,7 +24,7 @@ import ViewSMS from './comps/ViewSMS.tsx';
 import AddMeas from './comps/AddMeas.tsx';
 import PrintInvoice from './comps/PrintInvoice.tsx';
 
-const user = localStorage.getItem('user'); // unable to use ternary operators with users
+// const user = localStorage.getItem('user'); // unable to use ternary operators with users
 const router = createBrowserRouter([
   {
     path: '/login',
@@ -35,7 +35,7 @@ const router = createBrowserRouter([
     element: <DashBoard />,
     children: [
       {
-        path: '/dashboard',
+        path: '/',
         element: <DashBoardMain />
       },
       {

@@ -64,7 +64,7 @@ const DashBoard = () => {
             <h5 className="sidebartitle">Navigation</h5>
             <ul className="nav nav-pills nav-stacked nav-bracket navbar">
               <li>
-                <NavLink to="/dashboard" style={navLinkStyles}>
+                <NavLink to="/" style={navLinkStyles}>
                   <i className="fa fa-home"></i> <span>Dashboard</span>
                 </NavLink>
                 

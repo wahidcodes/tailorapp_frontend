@@ -6,8 +6,8 @@ const ViewEmails = () => {
     const [emailData, setEmailData] = useState([]);
     const navigate = useNavigate()
     const user:any = JSON.parse(localStorage.getItem('user')||'');
-    const [msg, setMsg] = useState('');
-    
+
+    /*
     const deleteEmail = (id:any)=>{
         fetch(`${import.meta.env.VITE_API_URL}/deleteorder`,{
             method:'DELETE',
@@ -22,6 +22,7 @@ const ViewEmails = () => {
 
 
     }
+    */
         const fetchEmails = async ()=>{
             
                 const res = await fetch(`${import.meta.env.VITE_API_URL}/fetchemails`,{
@@ -40,7 +41,7 @@ const ViewEmails = () => {
         }
         fetchEmails();
 
-    },[msg])
+    },[])
     
     console.log('Data: ',emailData)
 

@@ -15,7 +15,6 @@ const UpdateOrder = () => {
     const [paidAmount, setPaidAmount] = useState('');
     const [customerName, setCustomerName] = useState('');
 
-    const [singleOrder, setSingleOrder] = useState([]);
     const [orderDate, setOrderDate] = useState('');
 
     const fetchCustomer = async ()=>{
@@ -34,14 +33,15 @@ const UpdateOrder = () => {
         const res = await fetch(`${import.meta.env.VITE_API_URL}/fetchorder`,{
             method:'POST',
             headers: {'Content-Type':'application/json','Authorization':`Bearer ${user.token}`},
-            body: JSON.stringify({idParam})
+               body: JSON.stringify({idParam})
         })
         const {result} = await res.json();
         console.log(result)
-        setCustomerName(result.customerName)
-        setSingleOrder(result)
-        setOrderDate(singleOrder?.dateReceived?.slice(0,10))
-
+        setCustomerName(result.customerName);
+        setDescription(result.description);
+        setOrderDate(result.dateReceived.slice(0,10))
+        setAmount(result.amount);
+        setPaidAmount(result.paidAmount);
     }
 
     useEffect(()=>{
@@ -58,7 +58,7 @@ const UpdateOrder = () => {
     
 
     const submit = ()=>{
-//        console.log(orgObj)
+        console.log(orgObj)
 
         if(user){
             if(customerName=='' || description=='' || dateReceived=='' ||  amount=='' || paidAmount==''){
@@ -126,7 +126,7 @@ const UpdateOrder = () => {
                     Description:
                 </div>
                 <div className="col-xs-6 col-md-1">
-                    <textarea name="description" id="" cols={30} rows={10} defaultValue={singleOrder.description} onChange={(e)=>setDescription(e.target.value)}></textarea>
+                    <textarea name="description" id="" cols={30} rows={10} defaultValue={description} onChange={(e)=>setDescription(e.target.value)}></textarea>
                 </div>
                 <div className="col-xs-12 col-md-4" />
             </div>
@@ -154,7 +154,7 @@ const UpdateOrder = () => {
                     Amount:
                 </div>
                 <div className="col-xs-6 col-md-1">
-                    <input type="number" name="" id="" defaultValue={singleOrder.amount} onChange={(e)=>setAmount(e.target.value)}/>
+                    <input type="number" name="" id="" defaultValue={amount} onChange={(e)=>setAmount(e.target.value)}/>
                 </div>
                 <div className="col-xs-12 col-md-4" />
             </div>
@@ -168,7 +168,7 @@ const UpdateOrder = () => {
                     Paid:
                 </div>
                 <div className="col-xs-6 col-md-1">
-                    <input type="number" name="" id="" defaultValue={singleOrder.paidAmount} onChange={(e)=>setPaidAmount(e.target.value)}/>
+                    <input type="number" name="" id="" defaultValue={paidAmount} onChange={(e)=>setPaidAmount(e.target.value)}/>
                 </div>
                 <div className="col-xs-12 col-md-4" />
             </div>
