@@ -379,7 +379,16 @@ const DashBoard = () => {
           <div className="contentpanel">
               <Outlet />
           </div>
+                    
         </div>
+
+        {/*                                              !--------FOOTER---------!                                                */}
+        <div style={{width:'100%',backgroundColor:'#00000f',color:"white",height:'50px',display:'flex',justifyContent:'center'}}>
+              <div style={{margin:15,fontFamily:'sans-serif'}}>
+                  © Copyright 2024. Developed and maintained by <a href="linkedin.com/in/mohamed-wahid-7817bb239">Mohamed Wahid</a>
+              </div>
+          </div>
+
       </section>
     </>
   );

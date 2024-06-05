@@ -67,12 +67,23 @@ const Login = () => {
                 <input type="password" id="password" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} />
               </div>
               <button type="button" className="btn btn-primary btn-block" onClick={()=>onSubmit()}>Login</button>
+
+              <br /><br />
+
+              <div style={{height:'20vh', width:'30vh', border:'1px solid black', borderRadius:'10px', display:'flex', justifyContent:'center', marginLeft:'5em'}}>
+                <br />
+                For demo user: <br /><br />
+                Email:  admin@gmail.com <br /><br />
+                Password: admin <br />
+              </div>
+
             </div>
           </div>
         </div>
       </div>
     </div>        
     </div>
+
     </>
     );
 }
