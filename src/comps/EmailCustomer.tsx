@@ -48,7 +48,7 @@ const EmailCustomer = () => {
 
 
 //    const templateObj = {customerName:"wahid",description:"no desc",dateReceived:"14/05/2024",amount:"200",paidAmount:"150"}
-    const orgObj = {email, customerName, template, message};
+    //const orgObj = {email, customerName, template, message};
     
 
 /*                                                      COMMENTED TO PREVENT MISUSE

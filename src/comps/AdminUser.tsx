@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useAuthContext } from "../context/useAuthContext";
 import { useNavigate } from "react-router-dom";
 
 const AdminUser = () => {
@@ -14,9 +13,11 @@ const AdminUser = () => {
             navigate('/login')
         }
     },[])
-
+    
     const onSubmit = ()=>{
-        
+
+        alert("access blocked")
+        /*
         if(user){
 
             fetch(`${import.meta.env.VITE_API_URL}/signup`,{
@@ -33,7 +34,7 @@ const AdminUser = () => {
         else{
             alert('Please login')
         }
-
+        */
     }
 
     return (  
@@ -44,8 +45,7 @@ const AdminUser = () => {
                 Password: <input type="password" name="password" id="password" onChange={(e)=>setPassword(e.target.value)}/><br/><br />
                 Role: <input type="text" name="role" id="role" onChange={(e)=>setRole(e.target.value)}/><br/><br />
                 <button type="submit" onClick={()=>{
-                    //onSubmit()
-                    alert("access blocked")
+                    onSubmit()
                 }}>Submit</button>
         </>
     );}

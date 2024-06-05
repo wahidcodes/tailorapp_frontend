@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 
 const AddOrder = () => {
 
     const user = JSON.parse(localStorage.getItem('user') || '');
     const navigate = useNavigate();
-    const {idParam} = useParams();
+    
  
     const [customerData, setCustomerData] = useState([]);
 
@@ -27,7 +27,7 @@ const AddOrder = () => {
         setCustomerName(data.result[0].fullName)
         
     }
-    
+    /*                                              DONT KNOW THE USE
     const fetchDefaultCustomer = async()=>{
 
         const res = await fetch(`${import.meta.env.VITE_API_URL}/fetchid`,{
@@ -39,7 +39,7 @@ const AddOrder = () => {
         console.log("Fetched")
         setCustomerName(result.fullName)
     }
-
+    */
     useEffect(()=>{
         if(!user){
             navigate('/');

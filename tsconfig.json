@@ -16,7 +16,7 @@
 
     /* Linting */
     "strict": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,                                            // convert to true if u need to use by wahid
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
