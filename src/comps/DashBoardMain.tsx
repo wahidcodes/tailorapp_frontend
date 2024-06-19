@@ -3,13 +3,15 @@ import { Link, useNavigate } from "react-router-dom";
 
 const DashBoardMain = () => {
 
+    
     const [loading, setLoading] = useState(true)
     const [customerData, setCustomerData] = useState([]);
     const [orderData, setOrderData] = useState([]);
     const [income, setIncome] = useState();
-    const user:any = JSON.parse(localStorage.getItem('user')||'');
+    const user = JSON.parse(localStorage.getItem('user')||'null');
     const navigate = useNavigate();
 
+    console.log(localStorage.getItem('user'))
 
     const fetchCustomer = async ()=>{
         
@@ -49,14 +51,16 @@ const DashBoardMain = () => {
 
     console.log(income, loading)
     
-useEffect(()=>{
-    if(!user){
-        navigate('/');
-    }
-    fetchCustomer();
-    fetchOrder();
-    fetchIncome();
-},[])
+    useEffect(()=>{
+        console.log(user);
+        if(!user){
+            navigate('/login');
+            console.log('navigating')
+        }
+        fetchCustomer();
+        fetchOrder();
+        fetchIncome();
+    },[])
 
     return (  
         <>
