@@ -23,12 +23,17 @@ import ViewEmails from './comps/ViewEmails.tsx';
 import ViewSMS from './comps/ViewSMS.tsx';
 import AddMeas from './comps/AddMeas.tsx';
 import PrintInvoice from './comps/PrintInvoice.tsx';
+import NotFound from './comps/NotFound.tsx';
 
 // const user = localStorage.getItem('user'); // unable to use ternary operators with users
 const router = createBrowserRouter([
   {
     path: '/login',
     element: <Login/>
+  },  
+  {
+    path: '/*',
+    element: <NotFound/>
   },  
   {
     path: "/",
