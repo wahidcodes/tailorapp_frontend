@@ -60,11 +60,11 @@ const Login = () => {
               <h2 className="card-title text-center mb-4">Login</h2>
               <div className="form-group">
                 <label htmlFor="email">Email:</label>
-                <input type="email" id="email" className="form-control" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <input type="email" id="email" className="form-control" style={{width:'100%'}} value={email} onChange={(e) => setEmail(e.target.value)} />
               </div>
               <div className="form-group">
                 <label htmlFor="password">Password:</label>
-                <input type="password" id="password" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} />
+                <input type="password" id="password" className="form-control" value={password} style={{width:'100%'}}  onChange={(e) => setPassword(e.target.value)} />
               </div>
               <button type="button" className="btn btn-primary btn-block" onClick={()=>onSubmit()}>Login</button>
 
