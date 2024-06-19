@@ -49,12 +49,12 @@ const DashBoard = () => {
               <h5 className="sidebartitle actitle">Account</h5>
               <ul className="nav nav-pills nav-stacked nav-bracket mb30">
                 <li>
-                  <a href="changepass.php">
+                  <a href="changepass#">
                     <i className="fa fa-cog"></i> <span>Account Settings</span>
                   </a>
                 </li>
                 <li>
-                  <a href="signout.php">
+                  <a href="signout#">
                     <i className="fa fa-sign-out"></i> <span>Sign Out</span>
                   </a>
                 </li>
@@ -127,27 +127,27 @@ const DashBoard = () => {
                 
                 <ul id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">                  
                   <li>
-                    <a href="staffadd.php">
+                    <a href="staffadd#">
                       <i className="fa fa-caret-right"></i>Add Staff
                     </a>
                   </li>
                   <li>
-                    <a href="staffview.php">
+                    <a href="staffview#">
                       <i className="fa fa-caret-right"></i>View/Edit Staff
                     </a>
                   </li>
                   <li>
-                    <a href="paysalary.php">
+                    <a href="paysalary#">
                       <i className="fa fa-caret-right"></i> Pay Salary
                     </a>
                   </li>
                   <li>
-                    <a href="staffcatadd.php">
+                    <a href="staffcatadd#">
                       <i className="fa fa-caret-right"></i>Add Designation
                     </a>
                   </li>
                   <li>
-                    <a href="staffcatview.php">
+                    <a href="staffcatview#">
                       <i className="fa fa-caret-right"></i>View/Edit
                       Designations
                     </a>
@@ -167,22 +167,22 @@ const DashBoard = () => {
                 
                 <ul className="collapse" id="collapse1" aria-labelledby="heading1" data-parent="#accordionExample">                  
                 <li>
-                    <a href="expadd.php">
+                    <a href="expadd#">
                       <i className="fa fa-caret-right"></i>Add Expenses
                     </a>
                   </li>
                   <li>
-                    <a href="expview.php">
+                    <a href="expview#">
                       <i className="fa fa-caret-right"></i>View/Edit Expenses
                     </a>
                   </li>
                   <li>
-                    <a href="expcatadd.php">
+                    <a href="expcatadd#">
                       <i className="fa fa-caret-right"></i>Add Expense Category
                     </a>
                   </li>
                   <li>
-                    <a href="expcatview.php">
+                    <a href="expcatview#">
                       <i className="fa fa-caret-right"></i>View/Edit Expense
                       Category
                     </a>
@@ -202,22 +202,22 @@ const DashBoard = () => {
                 
                 <ul className="collapse" id="collapse3" aria-labelledby="heading1" data-parent="#accordionExample">                  
                 <li>
-                    <a href="incadd.php">
+                    <a href="incadd#">
                       <i className="fa fa-caret-right"></i>Add Income
                     </a>
                   </li>
                   <li>
-                    <a href="incview.php">
+                    <a href="incview#">
                       <i className="fa fa-caret-right"></i>View/Edit Income
                     </a>
                   </li>
                   <li>
-                    <a href="inccatadd.php">
+                    <a href="inccatadd#">
                       <i className="fa fa-caret-right"></i>Add Income Category
                     </a>
                   </li>
                   <li>
-                    <a href="inccatview.php">
+                    <a href="inccatview#">
                       <i className="fa fa-caret-right"></i>View/Edit Income
                       Category
                     </a>
@@ -243,22 +243,22 @@ const DashBoard = () => {
                 
                 <ul className="collapse" id="collapse4" aria-labelledby="heading1" data-parent="#accordionExample">                  
                 <li>
-                    <a href="typeadd.php">
+                    <a href="typeadd#">
                       <i className="fa fa-caret-right"></i>Add Cloth Type
                     </a>
                   </li>
                   <li>
-                    <a href="typeview.php">
+                    <a href="typeview#">
                       <i className="fa fa-caret-right"></i>View/Edit Cloth Type
                     </a>
                   </li>
                   <li>
-                    <a href="partadd.php">
+                    <a href="partadd#">
                       <i className="fa fa-caret-right"></i>Set Mesurement Parts
                     </a>
                   </li>
                   <li>
-                    <a href="partview.php">
+                    <a href="partview#">
                       <i className="fa fa-caret-right"></i>View/Edit Mesurement
                       Parts
                     </a>
@@ -279,28 +279,28 @@ const DashBoard = () => {
                 
                 <ul className="collapse" id="collapse5" aria-labelledby="heading1" data-parent="#accordionExample">                  
                 <li>
-                    <a href="setgeneral.php">
+                    <a href="setgeneral#">
                       <i className="fa fa-caret-right"></i> Setting
                     </a>
                   </li>
                   <li>
-                    <a href="setlogo.php">
+                    <a href="setlogo#">
                       <i className="fa fa-caret-right"></i> LOGO
                     </a>
                   </li>
                   <li>
-                    <a href="document.php">
+                    <a href="document#">
                       <i className="fa fa-caret-right"></i> Office Documents
                     </a>
                   </li>
                   <li>
-                    <a href="templateadd.php">
+                    <a href="templateadd#">
                       <i className="fa fa-caret-right"></i>Add SMS/Email
                       Template
                     </a>
                   </li>
                   <li>
-                    <a href="templateview.php">
+                    <a href="templateview#">
                       <i className="fa fa-caret-right"></i>View SMS/Email
                       Template
                     </a>

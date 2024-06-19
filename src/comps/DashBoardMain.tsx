@@ -125,7 +125,7 @@ const DashBoardMain = () => {
                                 </div>
                             </div>
                         </div>
-                        <a href="incview.php">
+                        <a href="incview#">
                             <div className="panel-footer">
                                 <span className="pull-left">View Details</span>
                                 <span className="pull-right"><i className="fa fa-arrow-circle-right"></i></span>
