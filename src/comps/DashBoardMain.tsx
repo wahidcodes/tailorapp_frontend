@@ -11,8 +11,6 @@ const DashBoardMain = () => {
     const user = JSON.parse(localStorage.getItem('user')||'null');
     const navigate = useNavigate();
 
-    console.log(localStorage.getItem('user'))
-
     const fetchCustomer = async ()=>{
         
         const res = await fetch(`${import.meta.env.VITE_API_URL}/fetchcustomers`,{
@@ -20,7 +18,6 @@ const DashBoardMain = () => {
             headers: {'Content-Type':'application/json','Authorization':`Bearer ${user.token}`},
         })
         const data = await res.json();
-        
         setCustomerData(data.result);
         setLoading(false)
     }

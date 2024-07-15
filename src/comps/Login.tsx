@@ -8,7 +8,8 @@ const Login = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
+    const [disableState, setDisableState] = useState(false);
+    const [buttonState, setButtonState] = useState("Login")
     const onSubmit = ()=>{
 
         console.log('Email: ',email);
@@ -19,11 +20,14 @@ const Login = () => {
             return;
         }
 
-        fetch(`${import.meta.env.VITE_API_URL}/login`,{
+        else{
+          setDisableState(true)
+          setButtonState("Loading...");
+          fetch(`${import.meta.env.VITE_API_URL}/login`,{
             method:'POST',
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify({email, password}),
-        })
+          })
             .then(res=>{
                 if(!res.ok){
                     alert('Please ensure correct email and password')
@@ -43,7 +47,7 @@ const Login = () => {
                 console.log("Error occured: ",e)
             })
 
-    
+        }
     }
 
     return (  
@@ -66,7 +70,7 @@ const Login = () => {
                 <label htmlFor="password">Password:</label>
                 <input type="password" id="password" className="form-control" value={password} style={{width:'100%'}}  onChange={(e) => setPassword(e.target.value)} />
               </div>
-              <button type="button" className="btn btn-primary btn-block" onClick={()=>onSubmit()}>Login</button>
+              <button type="button" className="btn btn-primary btn-block" onClick={()=>onSubmit()} disabled={disableState}>{buttonState}</button>
 
               <br /><br />
 

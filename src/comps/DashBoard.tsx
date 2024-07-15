@@ -4,16 +4,21 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 //import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const DashBoard = () => {
-  const { user, dispatch } = useAuthContext();
+  const { dispatch } = useAuthContext();
   const navigate = useNavigate();
 
+  //const user: string | null = localStorage.getItem("user");
+  const user = JSON.parse(localStorage.getItem('user')||'null');
+      
+  console.log("New user ", localStorage.getItem('user'))
+  
   useEffect(() => {
-    const user: string | null = localStorage.getItem("user");
     if (!user) {
       navigate("/login");
     }
     if (user) {
-      dispatch({ type: "LOGIN", payload: JSON.parse(user) });
+      dispatch({ type: "LOGIN", payload: user });
+      console.log("Dispatched")
     }
   }, []);
 
@@ -30,13 +35,25 @@ const DashBoard = () => {
     }
   }
 
+  console.log("User:    ",user)
   /*                                            USE CLASS FUNTION WHEN NEEDED STYLE FOR NAVLINK
   const navLinkClass = ({ isActive }:any)=>{
     return isActive ? '' : ''
   }
   */
 
-  return (
+  fetch(`${import.meta.env.VITE_API_URL}/fetchcustomers`,{
+    method:'GET',
+    headers: {'Content-Type':'application/json','Authorization':`Bearer ${user.token}`},
+  })
+    .then(res=>res.json())
+    .then(data => {
+      if(data.error=="TokenExpiredError"){
+        navigate('/login')
+      }
+    })
+
+    return (
     <>
       <section>
         <div className="leftpanel">
