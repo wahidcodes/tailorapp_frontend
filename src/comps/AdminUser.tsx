@@ -16,8 +16,7 @@ const AdminUser = () => {
     
     const onSubmit = ()=>{
 
-        alert("access blocked")
-        /*
+        //alert("access blocked")
         if(user){
 
             fetch(`${import.meta.env.VITE_API_URL}/signup`,{
@@ -34,7 +33,6 @@ const AdminUser = () => {
         else{
             alert('Please login')
         }
-        */
     }
 
     return (  

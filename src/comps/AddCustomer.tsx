@@ -19,7 +19,7 @@ const AddCustomer = () => {
     const orgObj = {fullName, address, phoneNo, city, email, comment, gender };
     
     const submit = ()=>{
-        
+        console.log(orgObj);
         if(user){
             if(fullName=='' || address=='' || phoneNo=='' || city=='' || email=='' || comment=='' || gender=='' ){
                 alert('Please enter full details')
@@ -39,8 +39,8 @@ const AddCustomer = () => {
                         return res.json()
                     }
                 })
-                .then(()=>{
-                    alert("Customer successfully added")
+                .then((res)=>{
+                    alert(res.msg)
                     navigate('/viewcustomer')
                 })
                 .catch((e:any)=>{
