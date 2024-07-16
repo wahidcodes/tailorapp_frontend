@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import Logo from '../img/logo.png'
 import { useNavigate, useParams } from 'react-router-dom';
 import { useReactToPrint } from 'react-to-print';
+
 const PrintInvoice = () => {
     
     interface singleOrder{
@@ -69,7 +70,10 @@ const PrintInvoice = () => {
             </div>
             <div className="printContent" ref={componentRef}>
                 <div style={{display:'flex',justifyContent:'center'}}>
-                    <img src={Logo} alt="" />
+                    {/* 
+                                    USE LOGO IF NEEDED
+                        <img src={Logo} alt="" width={100} height={100} />  
+                    */}
                 </div>
                 <br /><br />
                 <div>

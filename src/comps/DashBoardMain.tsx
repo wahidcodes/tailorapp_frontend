@@ -49,7 +49,6 @@ const DashBoardMain = () => {
     console.log(income, loading)
     
     useEffect(()=>{
-        console.log(user);
         if(!user){
             navigate('/login');
             console.log('navigating')
