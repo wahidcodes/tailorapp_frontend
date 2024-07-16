@@ -56,6 +56,10 @@ const DashBoard = () => {
     return (
     <>
       <section>
+        <div className="leftpanel">
+          <div className="logopanel">
+            <h1>TAILOR SOFTWARE</h1>
+          </div>
 
           <div className="leftpanelinner">
             <div className="visible-xs hidden-sm hidden-md hidden-lg">
@@ -328,12 +332,79 @@ const DashBoard = () => {
 
             </ul>
 </nav>
+          </div>
+        </div>
+        
+
+        <div className="mainpanel">
+          <div className="headerbar">
+
+            <a className="menutoggle" onClick={()=>alert("Working")}>
+              
+              <i className="fa fa-bars"></i>
+            </a>
+
+            <div className="header-right">
+              <ul className="headermenu">
+                <li>
+                  <div className="btn-group">
+                    <button
+                      type="button"
+                      className="btn btn-default dropdown-toggle"
+                      data-toggle="dropdown"
+                    >
+                      <span className="caret"></span>
+                    </button>
+                    <ul className="dropdown-menu dropdown-menu-usermenu pull-right">
+                      <li>
+                        {user && (
+                          <a onClick={()=>navigate('/changepassword')}>
+                              <span>
+                                  <i className="fa fa-cog"></i>
+                                  <span>Account Settings</span>
+                              </span>
+                          </a>
+                        )}
+                      </li>
+                      <li>
+                        {user && ( 
+                          <a onClick={() => logout()}>
+                            <span>
+                                <i className="fa fa-sign-out"></i>
+                                <span>Sign Out</span>
+                            </span>
+                          </a>
+                        )}
+                      </li>
+                      <li>
+                        {!user && (
+                          <a onClick={() => navigate('/login')}>
+                          <span>
+                              <i className="fa fa-sign-out"></i>
+                              <span>Login</span>
+                          </span>
+                        </a>
+                        )}
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
           <div className="contentpanel">
               <Outlet />
           </div>
                     
         </div>
 
+        {/*                                              !--------FOOTER---------!                                                */}
+        <div style={{width:'100%',backgroundColor:'#00000f',color:"white",height:'50px',display:'flex',justifyContent:'center'}}>
+              <div style={{margin:15,fontFamily:'sans-serif'}}>
+                  © Copyright 2024. Developed and maintained by <a href="linkedin.com/in/mohamed-wahid-7817bb239">Mohamed Wahid</a>
+              </div>
+          </div>
 
       </section>
     </>
