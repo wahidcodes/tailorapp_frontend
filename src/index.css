@@ -35,7 +35,7 @@
 }
 
 body {
-    background: #695428;
+    /*background: #695428;*/
     font-family: 'LatoRegular', 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, sans-serif !important;
     line-height: 21px;
     color: #636e7b;
@@ -90,15 +90,17 @@ input[type=submit].btn-block, input[type=reset].btn-block, input[type=button].bt
 width: 200px;
 }
 
-
+.nodisplay{
+    display: none;
+}
 
 /********** 3. HEADER PANEL **********/
 /*************************************/
 
 
 .headerbar {
-    border-left: 1px solid #eee;
-    background: #DCDCDC;
+    
+    background: #1B1212;
 }
 
 .headerbar::after {
@@ -459,8 +461,53 @@ width: 200px;
     color: #199C29;
 }
 
-.leftpanelinner {
-    padding: 5px 15px;
+@media screen and (max-width: 700px) {
+    .leftpanelinner {
+        position: absolute;
+        background-color: #301934;
+        padding: 5px 15px;
+        z-index: 2;
+        width: 100%;
+        height: 100vh;
+    }
+    .contentpanel {
+        height: 100vh;
+        width: 20%;
+        padding: 20px;
+        position: relative;
+        background-color: #FCFBF4;
+    }
+    
+  }
+
+@media screen and (min-width: 701px) {
+    .leftpanelinner {
+        background-color: #301934;
+        padding: 5px 15px;
+        width:20%;
+        height: 100vh;
+    }
+
+    .contentpanel {
+        height: 100vh;
+        width: 80%;
+        padding: 20px;
+        /*position: relative;*/
+        background-color: #FCFBF4;
+    }
+}
+.contentpanel1 {
+    height: 100vh;
+    width: 100%;
+    padding: 20px;
+    /*position: relative;*/
+    background-color: #FCFBF4;
+}
+
+.contentpanel::after {
+    clear: both;
+    display: block;
+    content: '';
 }
 
 .leftpanel .searchform {
@@ -841,18 +888,6 @@ width: 200px;
 
 .pageheader .breadcrumb li.active {
     color: #333;
-}
-
-.contentpanel {
-    padding: 20px;
-    position: relative;
-    background-color: #FCFBF4;
-}
-
-.contentpanel::after {
-    clear: both;
-    display: block;
-    content: '';
 }
 
 form .form-group:last-child {
