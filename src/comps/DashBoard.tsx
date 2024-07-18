@@ -24,12 +24,15 @@ const DashBoard = () => {
   console.log("New user ", localStorage.getItem('user'))
   
   useEffect(() => {
-    if (!user) {
+    console.log("Working")
+    const user = JSON.parse(localStorage.getItem('user')||'null');
+    if (!user || user=='null') {
       navigate("/login");
     }
     if (user) {
       dispatch({ type: "LOGIN", payload: user });
       console.log("Dispatched")
+      fetchDataforJWTTokenValidation()
     }
 
     if(screen.width < 700){
@@ -57,24 +60,23 @@ const DashBoard = () => {
     return isActive ? '' : ''
   }
   */
-
-  fetch(`${import.meta.env.VITE_API_URL}/fetchcustomers`,{
-    method:'GET',
-    headers: {'Content-Type':'application/json','Authorization':`Bearer ${user.token}`},
-  })
-    .then(res=>res.json())
-    .then(data => {
-      if(data.error=="TokenExpiredError"){
-        navigate('/login')
-      }
+  const fetchDataforJWTTokenValidation = () => {
+    fetch(`${import.meta.env.VITE_API_URL}/fetchcustomers`,{
+      method:'GET',
+      headers: {'Content-Type':'application/json','Authorization':`Bearer ${user.token}`},
     })
-
+      .then(res=>res.json())
+      .then(data => {
+        if(data.error=="TokenExpiredError"){
+          navigate('/login')
+        }
+      })  
+  }
+  
     return (
     <>
       <section>
         
-        
-
         <div>
           <div className="headerbar">
             
