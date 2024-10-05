@@ -2,6 +2,12 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const ViewOrders = () => {
+
+    const parseDate = (order : string) => {
+        return order.substr(0,10);
+    }
+    //console.log(parseDate("2024-01-11T00:00:00.000Z"));
+
     const [loading, setLoading] = useState(true)
     const [orderData, setOrderData] = useState([]);
     const navigate = useNavigate()
@@ -12,7 +18,7 @@ const ViewOrders = () => {
         fetch(`${import.meta.env.VITE_API_URL}/deleteorder`,{
             method:'DELETE',
             headers: {'Content-Type':'application/json','Authorization':`Bearer ${user.token}`},
-            body:JSON.stringify({id})            
+            body:JSON.stringify({id})
         })
             .then(res=>res.json())
             .then(data=>{
@@ -49,10 +55,6 @@ const ViewOrders = () => {
         <>
             <h2>View Orders</h2>
             <hr />
-
-        
-
-
         
             <div className="panel panel-default">
       
@@ -84,7 +86,7 @@ const ViewOrders = () => {
                                     </a>
                                 </td>
                                 <td>{order.description}</td>
-                                <td>{order.dateReceived}</td>
+                                <td>{parseDate(order.dateReceived)}</td>
                                 <td>{order.amount}</td>
                                 <td>{order.amount-order.paidAmount}</td>
                                 <td>

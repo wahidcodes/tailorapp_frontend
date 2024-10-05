@@ -47,11 +47,10 @@ const EmailCustomer = () => {
     },[])
 
 
-//    const templateObj = {customerName:"wahid",description:"no desc",dateReceived:"14/05/2024",amount:"200",paidAmount:"150"}
-    //const orgObj = {email, customerName, template, message};
+    //const templateObj = {customerName:"wahid",description:"no desc",dateReceived:"14/05/2024",amount:"200",paidAmount:"150"}
+    const orgObj = {email, customerName, template, message};
     
 
-/*                                                      COMMENTED TO PREVENT MISUSE
     const submit = ()=>{
 
         console.log(orgObj)
@@ -61,34 +60,38 @@ const EmailCustomer = () => {
                 alert('Please enter full details')
                 return;
             }
-            fetch(`${import.meta.env.VITE_API_URL}/emailcustomer`,{
-                method:'POST',
-                headers: {'Content-Type':'application/json','Authorization':`Bearer ${user.token}`},
-                body: JSON.stringify(orgObj),
-            })
-                .then(res=>{
-                    if(!res.ok){
-                        alert('Some problem in submitting order details')   
-                        throw Error(String(res.status))
-                    }
-                    else{
-                        return res.json()
-                    }
+            if(user.role!="admin"){
+                alert("You must be an admin to access email feature. Please contact the administrator on below footer section.");
+            }
+            else{
+                fetch(`${import.meta.env.VITE_API_URL}/emailcustomer`,{
+                    method:'POST',
+                    headers: {'Content-Type':'application/json','Authorization':`Bearer ${user.token}`},
+                    body: JSON.stringify(orgObj),
                 })
-                .then(data=>{
-                    alert("Email successfully sent")
-                    console.log(data.msg)
-                })
-                .catch((e:any)=>{
-                    console.log("Error occured: ",e)
-                })
+                    .then(res=>{
+                        if(!res.ok){
+                            alert('Some problem in submitting order details')   
+                            throw Error(String(res.status))
+                        }
+                        else{
+                            return res.json()
+                        }
+                    })
+                    .then(data=>{
+                        alert("Email successfully sent")
+                        console.log(data.msg)
+                    })
+                    .catch((e:any)=>{
+                        console.log("Error occured: ",e)
+                    })
+            }
         }
         else{
             alert('Please login')
         }
 
     }
-*/
     return (  
         <>
             <h2>Email Customer</h2>
@@ -166,8 +169,7 @@ const EmailCustomer = () => {
                 <div className="col-xs-12 col-md-1" >
                     <button type="submit" className="btn btn-primary" style={{width:'9em'}} 
                      onClick={()=>{
-                        //submit()
-                        alert('Not available...');
+                        submit()
                      }
                     }>
                         Send Email

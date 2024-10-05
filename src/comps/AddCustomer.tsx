@@ -33,7 +33,7 @@ const AddCustomer = () => {
                 .then(res=>{
                     if(!res.ok){
                         alert('Some problem in submitting customer details')
-                        
+                        console.log(res);
                     }
                     else{
                         return res.json()
@@ -41,7 +41,7 @@ const AddCustomer = () => {
                 })
                 .then((res)=>{
                     alert(res.msg)
-                    navigate('/viewcustomer')
+                    navigate('/viewcustomer')    
                 })
                 .catch((e:any)=>{
                     console.log("Error occured: ",e)

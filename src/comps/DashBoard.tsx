@@ -67,7 +67,9 @@ const DashBoard = () => {
     })
       .then(res=>res.json())
       .then(data => {
-        if(data.error=="TokenExpiredError"){
+        console.log(data);
+        if(data.error=="TokenExpiredError" || data.error=="Cannot be authorized"){
+          alert("Your token has expired")
           navigate('/login')
         }
       })  

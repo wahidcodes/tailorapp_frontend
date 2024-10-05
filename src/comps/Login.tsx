@@ -31,6 +31,8 @@ const Login = () => {
             .then(res=>{
                 if(!res.ok){
                     alert('Please ensure correct email and password')
+                    setDisableState(false);
+                    setButtonState("Login");
                     throw new Error(String(res.status))
                 }
                 else{
@@ -77,8 +79,8 @@ const Login = () => {
               <div style={{height:'20vh', width:'30vh', border:'1px solid black', borderRadius:'10px', display:'flex', justifyContent:'center', marginLeft:'5em'}}>
                 <br />
                 For demo user: <br /><br />
-                Email:  admin@gmail.com <br /><br />
-                Password: admin <br />
+                Email:  user@gmail.com <br /><br />
+                Password: user <br />
               </div>
 
             </div>

@@ -36,8 +36,9 @@ const ViewCustomer = () => {
     }
 
     useEffect(()=>{
+        console.log("aaaaaa",user)
         if(!user){
-            navigate('/');
+            navigate('/login');
         }
         fetchCustomer();
 
@@ -49,10 +50,6 @@ const ViewCustomer = () => {
         <>
             <h2>View Customer</h2>
             <hr />
-
-        
-
-
         
             <div className="panel panel-default">
       
@@ -88,7 +85,6 @@ const ViewCustomer = () => {
                                 <td>
                                     <Link style={buttonStyles} className="btn btn-primary btn-xs" to={`/addorder/${customer._id}`}>New Order</Link>
                                     <Link style={buttonStyles} className="btn btn-warning btn-xs" to={`/addmeas/${customer._id}`}>Measurment</Link>
-                                    <Link style={buttonStyles} to={`/sendsms/${customer._id}`} className='btn btn-info btn-xs'>SMS</Link>
                                     <Link style={buttonStyles} to={`/email/${customer._id}`} className='btn btn-info btn-xs'>EMAIL</Link>
                                     <Link style={buttonStyles} to={``} className='btn btn-danger btn-xs' onClick={()=>deleteCustomer(customer._id)}>DELETE</Link>
                                 </td>
