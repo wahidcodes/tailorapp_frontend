@@ -3,13 +3,29 @@ import { useAuthContext } from "../context/useAuthContext";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 
 import NavBar from './NavBar';
-import Alert from 'react-bootstrap/Alert';
-import Button from 'react-bootstrap/Button';
-import Offcanvas from 'react-bootstrap/Offcanvas';
-import { Navbar } from "react-bootstrap";
-//import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import jwt_decode from 'jwt-decode';
 
 const DashBoard = () => {
+
+  const isTokenExpired = (token : any) => {
+    try {
+      const decodedToken : any = jwt_decode(token);
+      const currentTime = Date.now() / 1000; // Current time in seconds
+  
+      if (decodedToken.exp < currentTime) {
+        // Token has expired
+        return true;
+      }
+  
+      // Token is still valid
+      return false;
+    } catch (error) {
+      // Handle error (invalid token, etc.)
+      console.error("Error decoding token:", error);
+      return true; // Return expired in case of an error
+    }
+  };
 
   const [leftPanelState, setLeftPanelState] = useState('leftpanelinner');
   const [contentPanelState, setContentPanelState] = useState('contentpanel');
@@ -24,9 +40,12 @@ const DashBoard = () => {
   console.log("New user ", localStorage.getItem('user'))
   
   useEffect(() => {
-    console.log("Working")
+    
     const user = JSON.parse(localStorage.getItem('user')||'null');
-    if (!user || user=='null') {
+    const token = user.token;
+    const verify = isTokenExpired(token);
+
+    if (!user || user=='null' || verify) {
       navigate("/login");
     }
     if (user) {
